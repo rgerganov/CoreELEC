@@ -469,6 +469,7 @@ load_splash() {
                  /flash/oemsplash-${vres}.png \
                  /flash/oemsplash-1080.png \
                  /flash/oemsplash.png \
+                 /splash/splash-1080.png \
                  /splash/progress/splash-${vres}- \
                  /splash/progress/splash-1080- \
                  /splash/splash-${vres}.png \
@@ -656,6 +657,11 @@ mount_storage() {
   wakeonlan
 
   if [ -n "$disk" ]; then
+    /usr/sbin/e2fsck -n "$disk" > /dev/null 2>&1
+    FSCK_RET="$?"
+    if [ $FSCK_RET -ne 0 ] ; then
+      /usr/sbin/mke2fs -F -q -t ext4 -m 0 "$disk" > /dev/null 2>&1
+    fi
     if [ -n "$OVERLAY" ]; then
       OVERLAY_DIR=$(cat /sys/class/net/eth0/address | tr -d :)
 

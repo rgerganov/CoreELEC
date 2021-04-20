@@ -1,0 +1,19 @@
+commit eebd10022a5ce3f1fd8b2f879b3424a609c93fda
+Author: Radoslav Gerganov <rgerganov@gmail.com>
+Date:   Tue Apr 20 15:11:45 2021 +0300
+
+    Ignore skip_initramfs kernel param
+
+diff --git a/init/initramfs.c b/init/initramfs.c
+index bf3af10c500a..e78e0544bd36 100644
+--- a/init/initramfs.c
++++ b/init/initramfs.c
+@@ -613,7 +613,7 @@ static int __init skip_initramfs_param(char *str)
+ {
+ 	if (*str)
+ 		return 0;
+-	do_skip_initramfs = 1;
++	// do_skip_initramfs = 1;
+ 	return 1;
+ }
+ __setup("skip_initramfs", skip_initramfs_param);

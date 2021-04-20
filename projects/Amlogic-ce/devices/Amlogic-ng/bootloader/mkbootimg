@@ -52,4 +52,4 @@ if [ -f ${DTBIMG_PATH}/Generic_dtb.img ]; then
 fi
 
 LDFLAGS="" mkbootimg --kernel arch/$TARGET_KERNEL_ARCH/boot/$KERNEL_TARGET --ramdisk $BUILD/image/initramfs.cpio \
-  $ANDROID_BOOTIMG_SECOND $ANDROID_BOOTIMG_OPTIONS --output arch/$TARGET_KERNEL_ARCH/boot/boot.img
+  $ANDROID_BOOTIMG_SECOND $ANDROID_BOOTIMG_OPTIONS --cmdline "boot=/dev/system disk=/dev/data " --output arch/$TARGET_KERNEL_ARCH/boot/boot.img
