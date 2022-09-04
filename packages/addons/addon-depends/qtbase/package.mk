@@ -8,7 +8,7 @@ PKG_SHA256="4ef921c0f208a1624439801da8b3f4344a3793b660ce1095f2b7f5c4246b9463"
 PKG_LICENSE="GPL"
 PKG_SITE="http://qt-project.org"
 PKG_URL="http://download.qt.io/archive/qt/${PKG_VERSION%.*}/${PKG_VERSION}/submodules/${PKG_NAME}-everywhere-src-${PKG_VERSION}.tar.xz"
-PKG_DEPENDS_TARGET="freetype libjpeg-turbo libpng openssl sqlite zlib"
+PKG_DEPENDS_TARGET="freetype libjpeg-turbo libpng openssl sqlite zlib icu"
 PKG_LONGDESC="A cross-platform application and UI framework."
 PKG_BUILD_FLAGS="-sysroot"
 
@@ -18,42 +18,49 @@ PKG_CONFIGURE_OPTS_TARGET="-prefix /usr
                            -device linux-libreelec-g++
                            -opensource -confirm-license
                            -release
+                           -gui
+                           -widgets
+                           -feature-easingcurve
+                           -feature-itemmodel
+                           -feature-itemviews
+                           -feature-lineedit
+                           -feature-standarditemmodel
+                           -feature-listview
+                           -feature-combobox
                            -optimize-size
+                           -shared
                            -strip
-                           -static
                            -silent
                            -force-pkg-config
                            -make libs
-                           -no-dbus
-                           -no-accessibility
-                           -no-glib
+                           -dbus
+                           -accessibility
+                           -glib
+                           -icu
                            -no-iconv
-                           -no-icu
                            -qt-pcre
                            -system-zlib
                            -no-zstd
                            -openssl-linked
                            -no-libproxy
                            -no-cups
-                           -no-fontconfig
+                           -fontconfig
                            -system-freetype
                            -no-harfbuzz
-                           -no-opengl
-                           -no-egl
-                           -no-eglfs
+                           -opengl es2
+                           -eglfs
                            -no-gbm
                            -no-kms
-                           -no-linuxfb
+                           -enable-linuxfb
                            -no-xcb
                            -no-feature-vnc
                            -no-feature-sessionmanager
-                           -no-feature-easingcurve
                            -no-feature-effects
-                           -no-feature-gestures
-                           -no-feature-itemmodel
+                           -feature-gestures
                            -no-libudev
                            -no-evdev
                            -no-libinput
+                           -feature-inputdialog
                            -no-mtdev
                            -no-tslib
                            -no-xkbcommon
