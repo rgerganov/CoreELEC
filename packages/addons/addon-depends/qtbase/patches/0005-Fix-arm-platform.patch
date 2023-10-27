@@ -1,0 +1,12 @@
+--- a/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/Platform.h	2023-11-02 17:49:35.845677420 +0200
++++ b/qtscript/src/3rdparty/javascriptcore/JavaScriptCore/wtf/Platform.h	2023-11-02 17:51:27.032934431 +0200
+@@ -306,6 +306,9 @@
+     || defined(__ARM_ARCH_7R__)
+ #define WTF_ARM_ARCH_VERSION 7
+ 
++#elif defined(__ARM_ARCH_8__) \
++    || defined(__ARM_ARCH_8A__)
++#define WTF_ARM_ARCH_VERSION 8
+ /* RVCT sets _TARGET_ARCH_ARM */
+ #elif defined(__TARGET_ARCH_ARM)
+ #define WTF_ARM_ARCH_VERSION __TARGET_ARCH_ARM

@@ -1,0 +1,10 @@
+--- a/qtdeclarative/src/qmldebug/qqmlprofilerevent_p.h	2023-11-02 17:07:31.889340652 +0200
++++ b/qtdeclarative/src/qmldebug/qqmlprofilerevent_p.h	2023-11-02 17:08:02.833052076 +0200
+@@ -47,6 +47,7 @@
+ #include <QtCore/qvarlengtharray.h>
+ #include <QtCore/qmetatype.h>
+ 
++#include <limits>
+ #include <initializer_list>
+ #include <type_traits>
+ 

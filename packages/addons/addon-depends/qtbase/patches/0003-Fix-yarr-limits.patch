@@ -1,0 +1,11 @@
+--- a/qtdeclarative/src/3rdparty/masm/yarr/Yarr.h	2023-11-02 17:24:29.776088458 +0200
++++ b/qtdeclarative/src/3rdparty/masm/yarr/Yarr.h	2023-11-02 17:03:03.739882184 +0200
+@@ -27,7 +27,7 @@
+ 
+ #pragma once
+ 
+-#include <limits.h>
++#include <limits>
+ #include "YarrErrorCode.h"
+ 
+ namespace JSC { namespace Yarr {
