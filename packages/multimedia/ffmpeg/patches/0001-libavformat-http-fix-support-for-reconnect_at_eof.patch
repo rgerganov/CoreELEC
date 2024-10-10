@@ -1,0 +1,30 @@
+From b7662eafda63219dff6343bbea0bd0e9113ca4d0 Mon Sep 17 00:00:00 2001
+From: Radoslav Gerganov <rgerganov@gmail.com>
+Date: Thu, 10 Oct 2024 08:44:08 +0300
+Subject: [PATCH] libavformat/http: fix support for reconnect_at_eof
+
+---
+ libavformat/http.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/libavformat/http.c b/libavformat/http.c
+index fb2d9306bd..385790f4b2 100644
+--- a/libavformat/http.c
++++ b/libavformat/http.c
+@@ -1800,13 +1800,6 @@ static int64_t http_seek_internal(URLContext *h, int64_t off, int whence, int fo
+     if (s->off && h->is_streamed)
+         return AVERROR(ENOSYS);
+ 
+-    /* do not try to make a new connection if seeking past the end of the file */
+-    if (s->end_off || s->filesize != UINT64_MAX) {
+-        uint64_t end_pos = s->end_off ? s->end_off : s->filesize;
+-        if (s->off >= end_pos)
+-            return s->off;
+-    }
+-
+     /* we save the old context in case the seek fails */
+     old_buf_size = s->buf_end - s->buf_ptr;
+     memcpy(old_buf, s->buf_ptr, old_buf_size);
+-- 
+2.34.1
+
