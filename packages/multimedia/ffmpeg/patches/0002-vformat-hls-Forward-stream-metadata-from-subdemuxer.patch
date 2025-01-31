@@ -1,0 +1,25 @@
+From 54336e4ba6d9b636e6d4850f5455e17568501e87 Mon Sep 17 00:00:00 2001
+From: Radoslav Gerganov <rgerganov@gmail.com>
+Date: Fri, 31 Jan 2025 16:46:08 +0200
+Subject: [PATCH 1/1] vformat/hls: Forward stream metadata from subdemuxer
+
+---
+ libavformat/hls.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libavformat/hls.c b/libavformat/hls.c
+index 597bea7f25..938b60f8dc 100644
+--- a/libavformat/hls.c
++++ b/libavformat/hls.c
+@@ -1778,6 +1778,8 @@ static int set_stream_info_from_input_stream(AVStream *st, struct playlist *pls,
+     // copy disposition
+     st->disposition = ist->disposition;
+ 
++    av_dict_copy(&st->metadata, ist->metadata, 0);
++
+     // copy side data
+     for (int i = 0; i < ist->nb_side_data; i++) {
+         const AVPacketSideData *sd_src = &ist->side_data[i];
+-- 
+2.43.0
+
